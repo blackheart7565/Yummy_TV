@@ -184,6 +184,49 @@
 
     </Style>
 
+    <!--#endregion-->    
+    
+    <!--#region Button Add Window ListView Style-->
+    
+    <Style x:Key="BtnAddWinStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="Background"
+                Value="{StaticResource GradientBrush1}" />
+        <Setter Property="Width"
+                Value="110" />
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="FontSize"
+                Value="11" />
+        <Setter Property="FontFamily"
+                Value="Arial" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border CornerRadius="10"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="{StaticResource GradientBrush2}" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="{StaticResource GradientBrush3}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <!--#endregion-->
 
 </ResourceDictionary>

@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <FontFamily x:Key="BatesShower">/Resources/Font/Bates_Shower.ttf</FontFamily>
+    <FontFamily x:Key="Font1">/Resources/Font/Bates_Shower.ttf</FontFamily>
+    <FontFamily x:Key="Font2">/Resources/Font/1ed3ys9l.ttf</FontFamily>
+    <FontFamily x:Key="Font3">/Resources/Font/7fonts.ru_SERIO__.TTF</FontFamily>
     
 </ResourceDictionary>

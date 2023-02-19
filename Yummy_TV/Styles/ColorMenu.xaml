@@ -70,7 +70,23 @@
     <Color x:Key="Color65">#2B049A</Color>
     <Color x:Key="Color66">#1AB300</Color>
     <Color x:Key="Color67">#00FF00</Color>
-
+    <Color x:Key="Color69">#42FF42</Color>
+    <Color x:Key="Color70">#9799C9</Color>
+    <Color x:Key="Color71">#464995</Color>
+    <Color x:Key="Color72">#FFE8EDF9</Color>
+    <Color x:Key="Color73">#FFC5CBF9</Color>
+    <Color x:Key="Color74">#FF7381F9</Color>
+    <Color x:Key="Color75">#FF888888</Color>
+    <Color x:Key="Color76">#FFDDDDDD</Color>
+    <Color x:Key="Color77">#FF211AA9</Color>
+    <Color x:Key="Color78">#FF3843C4</Color>
+    <Color x:Key="Color79">#FF444444</Color>
+    <Color x:Key="Color80">#FFCCCCCC</Color>
+    <Color x:Key="Color81">#FFAAAAAA</Color>
+    <Color x:Key="Color82">#000000FF</Color>
+    <Color x:Key="Color83">#600000FF</Color>
+    
+    
     <!--#endregion-->
 
     <!--#region Window Border ColorBrushs -->
@@ -142,8 +158,82 @@
     <SolidColorBrush x:Key="ColorBrush65" Color="#2B049A" />
     <SolidColorBrush x:Key="ColorBrush66" Color="#1AB300" />
     <SolidColorBrush x:Key="ColorBrush67" Color="#00FF00" />
+    <SolidColorBrush x:Key="ColorBrush69" Color="#42FF42" />
+    <SolidColorBrush x:Key="ColorBrush70" Color="#9799C9" />
+    <SolidColorBrush x:Key="ColorBrush71" Color="#464995" />
+    <SolidColorBrush x:Key="ColorBrush72" Color="#FFE8EDF9" />
+    <SolidColorBrush x:Key="ColorBrush73" Color="#FFC5CBF9" />
+    <SolidColorBrush x:Key="ColorBrush74" Color="#FF7381F9" />
+    <SolidColorBrush x:Key="ColorBrush75" Color="#FF888888" />
+    <SolidColorBrush x:Key="ColorBrush76" Color="#FFDDDDDD" />
+    <SolidColorBrush x:Key="ColorBrush77" Color="#FF211AA9" />
+    <SolidColorBrush x:Key="ColorBrush78" Color="#FF3843C4" />
+    <SolidColorBrush x:Key="ColorBrush79" Color="#FF444444" />
+    <SolidColorBrush x:Key="ColorBrush80" Color="#FFCCCCCC" />
+    <SolidColorBrush x:Key="ColorBrush81" Color="#FFAAAAAA" />
+    <SolidColorBrush x:Key="ColorBrush82" Color="#000000FF" />
+    <SolidColorBrush x:Key="ColorBrush83" Color="#600000FF" />
+    
+    <!--#endregion-->    
+    
+    <!--#region Gradient Color-->
+
+    <LinearGradientBrush x:Key="GradientBrush1"
+                         StartPoint="0,0"
+                         EndPoint="1,1">
+        <GradientStop Color="{StaticResource Color55}"
+                      Offset="0" />
+        <GradientStop Color="{StaticResource Color53}"
+                      Offset="0.5" />
+        <GradientStop Color="{StaticResource Color54}"
+                      Offset="0.75" />
+        <GradientStop Color="{StaticResource Color57}"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GradientBrush2" 
+                         StartPoint="1,1" 
+                         EndPoint="0,0">
+        <GradientStop Color="{StaticResource Color54}" Offset="0" />
+        <GradientStop Color="{StaticResource Color70}" Offset="0.5" />
+        <GradientStop Color="{StaticResource Color57}" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GradientBrush3" 
+                         StartPoint="1,1" 
+                         EndPoint="0,0">
+        <GradientStop Color="{StaticResource Color56}" Offset="0" />
+        <GradientStop Color="{StaticResource Color57}" Offset="0.5" />
+        <GradientStop Color="{StaticResource Color71}" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GradientBrush4"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="{StaticResource Color72}"
+                      Offset="0" />
+        <GradientStop Color="{StaticResource Color74}"
+                      Offset="0.5" />
+        <GradientStop Color="{StaticResource Color72}"
+                      Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GradientBrush5"
+                         StartPoint="0,0"
+                         EndPoint="1,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="{StaticResource Color82}"
+                              Offset="0" />
+                <GradientStop Color="{StaticResource Color83}"
+                              Offset="0.4" />
+                <GradientStop Color="{StaticResource Color83}"
+                              Offset="0.6" />
+                <GradientStop Color="{StaticResource Color82}"
+                              Offset="1" />
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
 
     <!--#endregion-->
+
+
 
     <!-- Button Colors -->
     <!-- TextBox Colors -->
