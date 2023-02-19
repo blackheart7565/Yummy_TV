@@ -10,7 +10,7 @@ namespace Yummy_TV.Model {
         private int _released;
         private int _genre;
 
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Data { get; set; } = DateTime.Now;
 
         public byte[] Image {
             get => _imgae;

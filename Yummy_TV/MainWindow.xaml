@@ -8,8 +8,8 @@
         xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="500"
-        Width="800"
+        Height="700"
+        Width="1000"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -18,7 +18,15 @@
     <Window.DataContext>
         <vm:MainNavigationVM />
     </Window.DataContext>
-    
+
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type vm:FullListVM}">
+            <local:FullListUS />
+        </DataTemplate>
+
+    </Window.Resources>
+
 
     <Border CornerRadius="10"
             BorderThickness="2">
@@ -69,7 +77,7 @@
 
                     <StackPanel Orientation="Horizontal"
                                 Height="40"
-                                Margin="10,30,0,40">
+                                Margin="10,30,0,100">
 
                         <Image Source="/Resources/Image/logo_3.jpg" />
 
@@ -94,7 +102,8 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush35}">
+                                     Tag="{StaticResource ColorBrush35}"
+                                     Command="{Binding ShowFullList}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Полный список"
@@ -130,6 +139,14 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Любимые"
+                                           Margin="10,0,0,0" />
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
+                                     Tag="{StaticResource ColorBrush60}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource menuButtonNavigationText}"
+                                           Tag="Настройки"
                                            Margin="10,0,0,0" />
                             </StackPanel>
                         </RadioButton>
@@ -177,8 +194,7 @@
 
                         <StackPanel Grid.Column="0"
                                     Orientation="Horizontal">
-                            <!--Text="{Binding Information}">-->
-                            <TextBlock Text="rgregerrgreger"
+                            <TextBlock Text="{Binding Information}"
                                        Width="200"
                                        Height="25"
                                        VerticalAlignment="Center"
@@ -233,7 +249,8 @@
                     <Button Grid.Row="0"
                             Style="{StaticResource buttonActionTopPanel}"
                             Tag="{StaticResource ColorBrush3}"
-                            Foreground="{StaticResource ColorBrush50}">
+                            Foreground="{StaticResource ColorBrush50}"
+                            Command="{Binding ButtonClose}">
 
                         <fontW:IconImage Icon="Xmark"
                                          Style="{StaticResource imageFontButton}" />
