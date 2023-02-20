@@ -39,7 +39,6 @@ namespace Yummy_TV.ViewModel {
         public ICommand ShowSettings { get; }
         public ICommand ShowFullList { get; }
 
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -47,6 +46,7 @@ namespace Yummy_TV.ViewModel {
             ButtonClose = new RelayCommand((obj) => Application.Current.Shutdown());
             ShowFullList = new RelayCommand(ExecuteShowFullListCommand);
             ShowSettings = new RelayCommand(ExecuteShowSettingsCommand);
+
 
             ExecuteShowFullListCommand(null);
 
@@ -61,7 +61,7 @@ namespace Yummy_TV.ViewModel {
             Information = "Полный список";
         }
         private void ExecuteShowSettingsCommand(object obj) {
-            AddToListView addToList = new AddToListView();
+            AddToFilter addToList = new();
             addToList.ShowDialog();
         }
     }

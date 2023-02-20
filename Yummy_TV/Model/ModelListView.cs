@@ -4,7 +4,7 @@ using Yummy_TV.Core;
 namespace Yummy_TV.Model {
     public class ModelListView : PropertyChangedBase {
 
-        private byte[] _imgae;
+        private string _imgae;
         private string _name = "";
         private string _originalName = "";
         private int _released;
@@ -12,7 +12,7 @@ namespace Yummy_TV.Model {
 
         public DateTime Data { get; set; } = DateTime.Now;
 
-        public byte[] Image {
+        public string Image {
             get => _imgae;
             set => Set(ref _imgae, value, nameof(_imgae));
         }

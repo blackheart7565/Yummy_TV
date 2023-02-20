@@ -1,53 +1,45 @@
 ﻿<Window x:Class="Yummy_TV.AddToListView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fontW="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
-        xmlns:fontW="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
-        xmlns:local="clr-namespace:Yummy_TV"
         mc:Ignorable="d"
         Title="AddToListView"
-        Height="400"
-        Width="350"
+        Height="500"
+        Width="400"
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Background="Transparent">
 
     <Window.DataContext>
-        <vm:MainNavigationVM />
+        <vm:AddToListViewVM />
     </Window.DataContext>
 
-    <Border CornerRadius="25"
-            BorderThickness="3"
+    <Border Background="{StaticResource ColorBrush22}"
             BorderBrush="{StaticResource ColorBrush20}"
-            Background="{StaticResource ColorBrush22}">
+            BorderThickness="1">
 
         <Grid>
 
             <Grid.RowDefinitions>
-
-                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-
+            <Grid>
                 <Grid.ColumnDefinitions>
-
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="70" />
-                    <ColumnDefinition Width="7" />
-
+                    <ColumnDefinition Width="80" />
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="1"
                         Width="50"
-                        Height="20"
+                        Height="30"
                         Style="{StaticResource BtnAddWinStyle}"
                         Click="Close_Click">
                     <fontW:IconImage Icon="Xmark"
@@ -56,38 +48,59 @@
 
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Border BorderBrush="{StaticResource ColorBrush20}"
+                    BorderThickness="0,0,0,2"
+                    VerticalAlignment="Bottom">
+            </Border>
 
-                <TextBox Margin="20"
-                         Tag="Comment"
-                         Style="{DynamicResource textBoxStyles}" />
+            <StackPanel Grid.Row="1"
+                        Orientation="Vertical">
 
-            </Grid>
+                <StackPanel Orientation="Horizontal"
+                            Height="100">
 
-            <Grid Grid.Row="3">
+                    <Image Width="100"
+                           Margin="150,0,0,0" />
 
-                <Grid.ColumnDefinitions>
+                    <Button Width="150"
+                            Height="30"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Content="Добавить картинку"
+                            Background="Transparent"
+                            Foreground="{StaticResource ColorBrush20}"
+                            FontWeight="Bold"
+                            FontSize="12"
+                            BorderBrush="Transparent"
+                            BorderThickness="0" />
 
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="20" />
+                </StackPanel>
+                <Border Height="2"
+                        VerticalAlignment="Top"
+                        BorderBrush="{StaticResource ColorBrush20}"
+                        BorderThickness="1" />
+                <StackPanel Margin="0,10,0,0">
+                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                             Tag="Name" />
+                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                             Tag="OriginalName" />
+                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                             Tag="Released" />
+                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                             Tag="Genre" />
+                </StackPanel>
+            </StackPanel>
 
-                </Grid.ColumnDefinitions>
+            <Button Content="Добавить"
+                    Grid.Row="2"
+                    Width="200"
+                    FontSize="17"
+                    Foreground="{StaticResource GradientBrush6}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource BtnAddWinStyle}">
 
-                <Button Grid.Column="1"
-                        Content="Сохранить"
-                        HorizontalAlignment="Left"
-                        Style="{StaticResource BtnAddWinStyle}">
-                </Button>
-
-                <Button Grid.Column="2"
-                        Content="Удалить"
-                        HorizontalAlignment="Right"
-                        Style="{StaticResource BtnAddWinStyle}">
-                </Button>
-
-            </Grid>
+            </Button>
 
         </Grid>
 

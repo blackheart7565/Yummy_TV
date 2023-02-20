@@ -21,12 +21,14 @@ namespace Yummy_TV {
             InitializeComponent();
         }
 
-        private void Image_SourceUpdated(object sender, DataTransferEventArgs e) {
-
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e) {
+            AddToListView addToList = new();
+            addToList.ShowDialog();
         }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e) {
-
+        private void AddFilterList_Click(object sender, System.Windows.RoutedEventArgs e) {
+            AddToFilter filter = new();
+            filter.ShowDialog();
         }
     }
 }

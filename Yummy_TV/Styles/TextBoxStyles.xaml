@@ -29,13 +29,16 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="True">
-                        <Label x:Name="LabelVisibilityTextBox"
-                               Content="{TemplateBinding Tag}"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Margin="10,10,0,0"
-                               Visibility="Collapsed"
-                               Foreground="{TemplateBinding Foreground}" />
+                        <Grid>
+                            <ScrollViewer />
+                            <Label x:Name="LabelVisibilityTextBox"
+                                   Content="{TemplateBinding Tag}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Margin="10,10,0,0"
+                                   Visibility="Collapsed"
+                                   Foreground="{TemplateBinding Foreground}" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
@@ -51,6 +54,74 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Add To ListView-->
+
+    <Style x:Key="textBoxInputTextToAddList"
+           TargetType="{x:Type TextBox}">
+        <Setter Property="Background"
+                Value="{StaticResource ColorBrush21}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource ColorBrush20}" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource ColorBrush20}" />
+        <Setter Property="BorderThickness"
+                Value="0,0,0,2" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Cursor"
+                Value="IBeam" />
+        <Setter Property="Padding"
+                Value="5,5,0,0" />
+        <Setter Property="Margin"
+                Value="10,20,10,0" />
+        <Setter Property="AllowDrop"
+                Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="3">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="False"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          HorizontalScrollBarVisibility="Hidden" />
+                            <Label x:Name="VisibilityTextLabel"
+                                   Content="{TemplateBinding Tag}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Visibility="Visible"
+                                   Margin="0,-22,0,10"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                   Padding="{TemplateBinding Padding}" />
+                        </Grid>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" />
+                        </Border.Effect>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text"
+                                           Value="" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Margin"
+                                    TargetName="VisibilityTextLabel"
+                                    Value="0,0,0,0" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
     </Style>
 
     <!--#endregion-->

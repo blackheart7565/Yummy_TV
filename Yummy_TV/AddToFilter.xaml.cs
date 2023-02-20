@@ -12,15 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Yummy_TV {
+namespace Yummy_TV
+{
     /// <summary>
-    /// Interaction logic for AddToListView.xaml
+    /// Interaction logic for AddToFilter.xaml
     /// </summary>
-    public partial class AddToListView : Window {
-        public AddToListView() {
+    public partial class AddToFilter : Window
+    {
+        public AddToFilter()
+        {
             InitializeComponent();
         }
 
-        private void Close_Click(object sender, RoutedEventArgs e) => this.Close();
+        private void Close_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
     }
 }

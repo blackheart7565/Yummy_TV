@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="/Styles/ButtonNavigationStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBoxStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/FontMenu.xaml"/>
+                <ResourceDictionary Source="/Styles/ListViewStyles.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
             
