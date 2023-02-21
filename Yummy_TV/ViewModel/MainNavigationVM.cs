@@ -32,37 +32,65 @@ namespace Yummy_TV.ViewModel {
 
         #endregion
 
+
         /// <summary>
         /// Property Command
         /// </summary>
         public ICommand ButtonClose { get; }
-        public ICommand ShowSettings { get; }
-        public ICommand ShowFullList { get; }
+        public ICommand ShowHomeCommand { get; }
+        public ICommand ShowFullListCommand { get; }
+        public ICommand ShowViewMomentCommand { get; }
+        public ICommand ShowViewPlansCommand { get; }
+        public ICommand ShowViewedCommand { get; }
+        public ICommand ShowFavouriteCommand { get; }
+
+
 
         /// <summary>
         /// Constructor
         /// </summary>
+        #pragma warning disable CS8618
         public MainNavigationVM() {
             ButtonClose = new RelayCommand((obj) => Application.Current.Shutdown());
-            ShowFullList = new RelayCommand(ExecuteShowFullListCommand);
-            ShowSettings = new RelayCommand(ExecuteShowSettingsCommand);
+            ShowHomeCommand = new RelayCommand(ExecuteShowHomeCommand);
+            ShowFullListCommand = new RelayCommand(ExecuteShowFullListCommand);
 
+            ShowViewMomentCommand = new RelayCommand(ExecuteShowViewMomentCommand);
+            ShowViewPlansCommand = new RelayCommand(ExecuteShowViewPlansCommand);
+            ShowViewedCommand = new RelayCommand(ExecuteShowViewedCommand);
+            ShowFavouriteCommand = new RelayCommand(ExecuteShowFavouriteCommand);
 
-            ExecuteShowFullListCommand(null);
-
+            ExecuteShowHomeCommand(null);
         }
+        #pragma warning restore CS8618
+
 
         /// <summary>
         /// Mathods
         /// </summary>
         /// <param name="obj"></param>
-        private void ExecuteShowFullListCommand(object obj) {
+        private void ExecuteShowHomeCommand(object? obj) {
+            Information = "Главная";
+        }
+        private void ExecuteShowFullListCommand(object? obj) {
             ChangedBase = new FullListVM();
             Information = "Полный список";
         }
-        private void ExecuteShowSettingsCommand(object obj) {
-            AddToFilter addToList = new();
-            addToList.ShowDialog();
+        private void ExecuteShowViewMomentCommand(object obj) {
+            ChangedBase = new ViewMomentVM();
+            Information = "Смотрю в данный момент";
+        }
+        private void ExecuteShowViewPlansCommand(object obj) {
+            ChangedBase = new ViewPlansVM();
+            Information = "В планах";
+        }
+        private void ExecuteShowViewedCommand(object obj) {
+            ChangedBase = new ViewedVM();
+            Information = "Прочитано";
+        }
+        private void ExecuteShowFavouriteCommand(object obj) {
+            ChangedBase = new FavouriteVM();
+            Information = "Любимые";
         }
     }
 }

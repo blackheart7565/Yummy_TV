@@ -24,6 +24,22 @@
         <DataTemplate DataType="{x:Type vm:FullListVM}">
             <local:FullListUS />
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:ViewMomentVM}">
+            <local:ViewMoment />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:ViewPlansVM}">
+            <local:ViewPlans />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:ViewedVM}">
+            <local:Viewed />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:FavouriteVM}">
+            <local:Favourite />
+        </DataTemplate>
 
     </Window.Resources>
 
@@ -93,7 +109,8 @@
                     <StackPanel Orientation="Vertical">
 
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush28}">
+                                     Tag="{StaticResource ColorBrush28}"
+                                     Command="{Binding ShowHomeCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Главная"
@@ -102,7 +119,7 @@
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
                                      Tag="{StaticResource ColorBrush35}"
-                                     Command="{Binding ShowFullList}">
+                                     Command="{Binding ShowFullListCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Полный список"
@@ -110,7 +127,8 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush7}">
+                                     Tag="{StaticResource ColorBrush7}"
+                                     Command="{Binding ShowViewMomentCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Смотрю в данный момент"
@@ -118,7 +136,8 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush46}">
+                                     Tag="{StaticResource ColorBrush46}"
+                                     Command="{Binding ShowViewPlansCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="В планах"
@@ -126,7 +145,8 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush3}">
+                                     Tag="{StaticResource ColorBrush3}"
+                                     Command="{Binding ShowViewedCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Прочитано"
@@ -134,7 +154,8 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush48}">
+                                     Tag="{StaticResource ColorBrush48}"
+                                     Command="{Binding ShowFavouriteCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Любимые"
@@ -142,8 +163,7 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush67}"
-                                     Command="{Binding ShowSettings}">
+                                     Tag="{StaticResource ColorBrush67}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Настройки"
@@ -260,7 +280,8 @@
                     <Button Grid.Row="1"
                             Style="{StaticResource buttonActionTopPanel}"
                             Tag="{StaticResource ColorBrush25}"
-                            Foreground="{StaticResource ColorBrush65}">
+                            Foreground="{StaticResource ColorBrush65}"
+                            Click="ButtonMaxmized_Click">
 
                         <fontW:IconImage Icon="Square"
                                          Style="{StaticResource imageFontButton}" />
@@ -270,7 +291,8 @@
                     <Button Grid.Row="2"
                             Style="{StaticResource buttonActionTopPanel}"
                             Tag="{StaticResource ColorBrush25}"
-                            Foreground="{StaticResource ColorBrush65}">
+                            Foreground="{StaticResource ColorBrush65}"
+                            Click="ButtonMinimizate_Click">
 
                         <fontW:IconImage Icon="WindowMinimize"
                                          Style="{StaticResource imageFontButton}" />

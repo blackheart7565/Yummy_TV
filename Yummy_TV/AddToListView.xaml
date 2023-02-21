@@ -43,7 +43,7 @@
                         Style="{StaticResource BtnAddWinStyle}"
                         Click="Close_Click">
                     <fontW:IconImage Icon="Xmark"
-                                     Style="{StaticResource imageFontButton}" />
+                                     Style="{StaticResource imageFontButtonAddToList}" />
                 </Button>
 
             </Grid>
