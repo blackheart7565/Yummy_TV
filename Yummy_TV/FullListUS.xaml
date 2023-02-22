@@ -3,12 +3,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
-             xmlns:model="clr-namespace:Yummy_TV.Model"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Tag="{Binding ModelListViewsCollection}">
+             Tag="{Binding AllListCollection}">
 
     <UserControl.DataContext>
         <vm:AllNavigationCollection />
@@ -37,6 +37,7 @@
         </StackPanel>
 
         <ListBox Grid.Row="1"
+                 x:Name="FullListBox"
                  Style="{StaticResource ListBoxStyle}"
                  ItemsSource="{Binding Path=Tag,
                         RelativeSource={RelativeSource Mode=FindAncestor,
@@ -118,10 +119,15 @@
 
                         </Grid>
 
-                        <Button Grid.Column="4"
-                                Style="{StaticResource ListBoxItemsButton}"
-                                Click="AddFilterList_Click"
-                                Content="•••" />
+                        <Grid Grid.Column="4">
+                            
+                            <Button Grid.Column="4"
+                                    Style="{StaticResource ListBoxItemsButton}"
+                                    Click="AddFilterList_Click"
+                                    Tag="{Binding Path=ID}"
+                                    Content="•••" />
+                            
+                        </Grid>                        
 
                     </Grid>
 

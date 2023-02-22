@@ -20,7 +20,7 @@
         <Setter Property="Cursor"
                 Value="IBeam" />
         <Setter Property="Padding"
-                Value="2,0,0,0" />
+                Value="7,7,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -30,12 +30,17 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             SnapsToDevicePixels="True">
                         <Grid>
-                            <ScrollViewer />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="False"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          HorizontalScrollBarVisibility="Hidden" />
                             <Label x:Name="LabelVisibilityTextBox"
                                    Content="{TemplateBinding Tag}"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
-                                   Margin="10,10,0,0"
+                                   Margin="{Binding Path=Padding,
+                                            RelativeSource={RelativeSource Mode=FindAncestor,
+                                            AncestorType={x:Type TextBox}}}"
                                    Visibility="Collapsed"
                                    Foreground="{TemplateBinding Foreground}" />
                         </Grid>

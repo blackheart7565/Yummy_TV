@@ -14,7 +14,7 @@ namespace Yummy_TV.ViewModel {
         #region Margin
 
         private PropertyChangedBase _changedBase;
-        private string _information;
+        private string _information = "";
 
         #endregion
 
@@ -22,12 +22,12 @@ namespace Yummy_TV.ViewModel {
         
         public PropertyChangedBase ChangedBase {
             get => _changedBase;
-            set => Set(ref _changedBase, value, nameof(_changedBase));
+            set => Set(ref _changedBase, value, nameof(ChangedBase));
         }
 
         public string Information {
             get => _information;
-            set => Set(ref _information, value, _information);
+            set => Set(ref _information, value, nameof(Information));
         }
 
         #endregion
@@ -54,7 +54,6 @@ namespace Yummy_TV.ViewModel {
             ButtonClose = new RelayCommand((obj) => Application.Current.Shutdown());
             ShowHomeCommand = new RelayCommand(ExecuteShowHomeCommand);
             ShowFullListCommand = new RelayCommand(ExecuteShowFullListCommand);
-
             ShowViewMomentCommand = new RelayCommand(ExecuteShowViewMomentCommand);
             ShowViewPlansCommand = new RelayCommand(ExecuteShowViewPlansCommand);
             ShowViewedCommand = new RelayCommand(ExecuteShowViewedCommand);
@@ -70,6 +69,7 @@ namespace Yummy_TV.ViewModel {
         /// </summary>
         /// <param name="obj"></param>
         private void ExecuteShowHomeCommand(object? obj) {
+            ChangedBase = new HomeVM();
             Information = "Главная";
         }
         private void ExecuteShowFullListCommand(object? obj) {

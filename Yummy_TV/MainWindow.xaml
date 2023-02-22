@@ -13,7 +13,10 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent">
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        MinHeight="700"
+        MinWidth="1000">
 
     <Window.DataContext>
         <vm:MainNavigationVM />
@@ -21,6 +24,10 @@
 
     <Window.Resources>
 
+        <DataTemplate DataType="{x:Type vm:HomeVM}">
+            <local:Home />
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:FullListVM}">
             <local:FullListUS />
         </DataTemplate>
@@ -44,7 +51,9 @@
     </Window.Resources>
 
     <Border CornerRadius="10"
-            BorderThickness="2">
+            BorderThickness="2"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown"
+            MouseEnter="Border_MouseEnter">
 
         <Border.BorderBrush>
 
@@ -223,8 +232,7 @@
                                        Foreground="{StaticResource ColorBrush35}"
                                        FontWeight="Bold"
                                        FontSize="16"
-                                       Margin="40,0,0,0">
-                            </TextBlock>
+                                       Margin="40,0,0,0" />
 
                         </StackPanel>
 

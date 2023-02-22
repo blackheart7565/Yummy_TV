@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Yummy_TV.Core;
 
 namespace Yummy_TV.ViewModel {
-    public class ViewMomentVM : PropertyChangedBase {
+    public class HomeVM : PropertyChangedBase {
 
     }
 }

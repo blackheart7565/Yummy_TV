@@ -20,7 +20,8 @@
 
     <Border Background="{StaticResource ColorBrush22}"
             BorderBrush="{StaticResource ColorBrush20}"
-            BorderThickness="1">
+            BorderThickness="1"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown">
 
         <Grid>
 
@@ -80,13 +81,13 @@
                         BorderBrush="{StaticResource ColorBrush20}"
                         BorderThickness="1" />
                 <StackPanel Margin="0,10,0,0">
-                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                    <TextBox x:Name="textBoxName" Style="{StaticResource textBoxInputTextToAddList}"
                              Tag="Name" />
-                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                    <TextBox x:Name="textBoxOriginalName" Style="{StaticResource textBoxInputTextToAddList}"
                              Tag="OriginalName" />
-                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                    <TextBox x:Name="textBoxReleased" Style="{StaticResource textBoxInputTextToAddList}"
                              Tag="Released" />
-                    <TextBox Style="{StaticResource textBoxInputTextToAddList}"
+                    <TextBox x:Name="textBoxGenre" Style="{StaticResource textBoxInputTextToAddList}"
                              Tag="Genre" />
                 </StackPanel>
             </StackPanel>
@@ -98,8 +99,8 @@
                     Foreground="{StaticResource GradientBrush6}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Style="{StaticResource BtnAddWinStyle}">
-
+                    Style="{StaticResource BtnAddWinStyle}"
+                    Click="ButtonAdd_Click">
             </Button>
 
         </Grid>
