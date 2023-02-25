@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using Yummy_TV.Core;
 using Yummy_TV.ViewModel;
 
@@ -10,7 +8,7 @@ namespace Yummy_TV {
     /// </summary>
     public partial class AddToListView : Window {
 
-        SerializerToJson serializerToJson = new SerializerToJson("FullListJson");
+        SerializerToJson serializerToJson = new SerializerToJson();
 
         public AddToListView() {
             InitializeComponent();
@@ -30,7 +28,7 @@ namespace Yummy_TV {
             }
             this.Close();
 
-            serializerToJson.SaveFIleJson(AllNavigationCollection.AllListCollection);
+            serializerToJson.SaveFIleJson(AllNavigationCollection.AllListCollection, "FullListJson");
         }
 
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e) {

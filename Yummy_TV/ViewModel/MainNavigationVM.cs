@@ -1,26 +1,29 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows;
 using Yummy_TV.Core;
 
 namespace Yummy_TV.ViewModel {
     public class MainNavigationVM : PropertyChangedBase {
 
-        #region Margin
+        private RelayCommand? _buttonShutdown;
+        private RelayCommand? _showHomeCommand;
+        private RelayCommand? _showFullListCommand;
+        private RelayCommand? _showViewMomentCommand;
+        private RelayCommand? _showViewPlansCommand;
+        private RelayCommand? _showViewedCommand;
+        private RelayCommand? _showFavouriteCommand;
 
-        private PropertyChangedBase _changedBase;
+        private PropertyChangedBase? _changedBase;
+
         private string _information = "";
 
-        #endregion
+
+        public MainNavigationVM() {
+            ExecuteShowHomeCommand();
+        }
 
         #region Property
-        
-        public PropertyChangedBase ChangedBase {
+
+        public PropertyChangedBase? ChangedBase {
             get => _changedBase;
             set => Set(ref _changedBase, value, nameof(ChangedBase));
         }
@@ -32,65 +35,106 @@ namespace Yummy_TV.ViewModel {
 
         #endregion
 
+        #region Все команды (All Command)
 
         /// <summary>
-        /// Property Command
+        /// Закрытие всех оконых потоков 
         /// </summary>
-        public ICommand ButtonClose { get; }
-        public ICommand ShowHomeCommand { get; }
-        public ICommand ShowFullListCommand { get; }
-        public ICommand ShowViewMomentCommand { get; }
-        public ICommand ShowViewPlansCommand { get; }
-        public ICommand ShowViewedCommand { get; }
-        public ICommand ShowFavouriteCommand { get; }
-
-
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        #pragma warning disable CS8618
-        public MainNavigationVM() {
-            ButtonClose = new RelayCommand((obj) => Application.Current.Shutdown());
-            ShowHomeCommand = new RelayCommand(ExecuteShowHomeCommand);
-            ShowFullListCommand = new RelayCommand(ExecuteShowFullListCommand);
-            ShowViewMomentCommand = new RelayCommand(ExecuteShowViewMomentCommand);
-            ShowViewPlansCommand = new RelayCommand(ExecuteShowViewPlansCommand);
-            ShowViewedCommand = new RelayCommand(ExecuteShowViewedCommand);
-            ShowFavouriteCommand = new RelayCommand(ExecuteShowFavouriteCommand);
-
-            ExecuteShowHomeCommand(null);
+        public RelayCommand ButtonShutdown {
+            get {
+                return _buttonShutdown ??= new RelayCommand(obj => {
+                    Application.Current.Shutdown();
+                });
+            }
         }
-        #pragma warning restore CS8618
+        /// <summary>
+        /// Главное окно
+        /// </summary>
+        public RelayCommand ShowHomeCommand {
+            get {
+                return _showHomeCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new HomeVM();
+                    Information = "Главная";
+                });
+            }
+        }
+        /// <summary>
+        /// Полный список
+        /// </summary>
+        public RelayCommand ShowFullListCommand {
+            get {
+                return _showFullListCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new FullListVM();
+                    Information = "Полный список";
+                });
+            }
+        }
+        /// <summary>
+        /// Смотрю в данный момент
+        /// </summary>
+        public RelayCommand ShowViewMomentCommand {
+            get {
+                return _showViewMomentCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new ViewMomentVM();
+                    Information = "Смотрю в данный момент";
+                });
+            }
+        }
+        /// <summary>
+        /// В планах
+        /// </summary>
+        public RelayCommand ShowViewPlansCommand {
+            get {
+                return _showViewPlansCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new ViewPlansVM();
+                    Information = "В планах";
+                });
+            }
+        }
+        /// <summary>
+        /// Просмотрено
+        /// </summary>
+        public RelayCommand ShowViewedCommand {
+            get {
+                return _showViewedCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new ViewedVM();
+                    Information = "Прочитано";
+                });
+            }
+        }
+        /// <summary>
+        /// Любимые
+        /// </summary>
+        public RelayCommand ShowFavouriteCommand {
+            get {
+                return _showFavouriteCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new FavouriteVM();
+                    Information = "Любимые";
+                });
+            }
+        }
 
+        #endregion
+
+        #region Methods
 
         /// <summary>
-        /// Mathods
+        /// Задает стартовую позиция окна
         /// </summary>
-        /// <param name="obj"></param>
-        private void ExecuteShowHomeCommand(object? obj) {
+        /// <param name="window"></param>
+        private void SetCenterPositionWindow(Window window) {
+            window.Owner = Application.Current.MainWindow;
+            window.Close();
+        }
+        /// <summary>
+        /// Первое отображение главного окна
+        /// </summary>
+        private void ExecuteShowHomeCommand() {
             ChangedBase = new HomeVM();
             Information = "Главная";
         }
-        private void ExecuteShowFullListCommand(object? obj) {
-            ChangedBase = new FullListVM();
-            Information = "Полный список";
-        }
-        private void ExecuteShowViewMomentCommand(object obj) {
-            ChangedBase = new ViewMomentVM();
-            Information = "Смотрю в данный момент";
-        }
-        private void ExecuteShowViewPlansCommand(object obj) {
-            ChangedBase = new ViewPlansVM();
-            Information = "В планах";
-        }
-        private void ExecuteShowViewedCommand(object obj) {
-            ChangedBase = new ViewedVM();
-            Information = "Прочитано";
-        }
-        private void ExecuteShowFavouriteCommand(object obj) {
-            ChangedBase = new FavouriteVM();
-            Information = "Любимые";
-        }
+
+        #endregion
+
     }
 }

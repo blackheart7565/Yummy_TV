@@ -13,8 +13,6 @@ namespace Yummy_TV {
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private SerializerToJson serializerToJson;
-        
         public MainWindow() {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
@@ -42,6 +40,8 @@ namespace Yummy_TV {
             AllNavigationCollection.AllListCollection = new SerializerToJson("FullListJson").LoadFileJson();
             AllNavigationCollection.ViewMomentCollection = new SerializerToJson("ViewMomentListJson").LoadFileJson();
             AllNavigationCollection.ViewPlansCollection = new SerializerToJson("ViewPlansListJson").LoadFileJson();
+            AllNavigationCollection.ViewedCollection = new SerializerToJson("ViewedListJson").LoadFileJson();
+            AllNavigationCollection.FavouriteCollection = new SerializerToJson("FavouriteListJson").LoadFileJson();
         }
     }
 }

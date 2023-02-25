@@ -5,6 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
+        xmlns:inter="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="AddToFilter"
         Height="400"
@@ -67,8 +68,14 @@
             <Grid Grid.Row="2">
 
                 <ComboBox Style="{StaticResource comboBoxStyle}"
-                          x:Name="ComboBoxStatus">
-
+                          x:Name="ComboBoxStatus"
+                          >
+                    <inter:Interaction.Triggers>
+                        <inter:EventTrigger EventName="SelectionChanged">
+                            <inter:InvokeCommandAction Command="{Binding SelectedIndexComboBox}"/>
+                        </inter:EventTrigger>
+                    </inter:Interaction.Triggers>
+                    
                     <ComboBoxItem Content="Смотрю в данный момент" />
                     <ComboBoxItem Content="В планах" />
                     <ComboBoxItem Content="Прочитано" />

@@ -6,7 +6,7 @@ namespace Yummy_TV.ViewModel {
         public static ObservableCollection<ModelListView> AllListCollection { get; set; } = new ObservableCollection<ModelListView>();
         public static ObservableCollection<ModelListView> ViewMomentCollection { get; set; } = new ObservableCollection<ModelListView>();
         public static ObservableCollection<ModelListView> ViewPlansCollection { get; set; } = new ObservableCollection<ModelListView>();
-        public ObservableCollection<ModelListView>? ViewedCollection { get; set; } = new ObservableCollection<ModelListView>();
-        public ObservableCollection<ModelListView>? FavouriteCollection { get; set; } = new ObservableCollection<ModelListView>();
+        public static ObservableCollection<ModelListView> ViewedCollection { get; set; } = new ObservableCollection<ModelListView>();
+        public static ObservableCollection<ModelListView> FavouriteCollection { get; set; } = new ObservableCollection<ModelListView>();
     }
 }

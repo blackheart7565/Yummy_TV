@@ -4,8 +4,8 @@ using System.Windows.Input;
 namespace Yummy_TV.Core {
     public class RelayCommand : ICommand {
 
-        private Action<object> _execute;
-        private Func<object, bool> _canExecute; 
+        private Action<object>? _execute;
+        private Func<object, bool> ?_canExecute; 
 
         public event EventHandler? CanExecuteChanged {
             add => CommandManager.RequerySuggested += value;
@@ -31,7 +31,7 @@ namespace Yummy_TV.Core {
         }
 
         public void Execute(object? parameter) {
-            _execute.Invoke(parameter);
+            _execute?.Invoke(parameter);
         }
     }
 }

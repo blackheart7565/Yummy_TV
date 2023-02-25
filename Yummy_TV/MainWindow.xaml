@@ -119,7 +119,8 @@
 
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
                                      Tag="{StaticResource ColorBrush28}"
-                                     Command="{Binding ShowHomeCommand}">
+                                     Command="{Binding ShowHomeCommand}"
+                                     IsChecked="True">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
                                            Tag="Главная"
@@ -278,7 +279,7 @@
                             Style="{StaticResource buttonActionTopPanel}"
                             Tag="{StaticResource ColorBrush3}"
                             Foreground="{StaticResource ColorBrush50}"
-                            Command="{Binding ButtonClose}">
+                            Command="{Binding ButtonShutdown}">
 
                         <fontW:IconImage Icon="Xmark"
                                          Style="{StaticResource imageFontButton}" />

@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Yummy_TV.Core {
     public abstract class PropertyChangedBase : INotifyPropertyChanged {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyString = "") {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyString));

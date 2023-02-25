@@ -13,16 +13,33 @@ namespace Yummy_TV.Core {
     public class SerializerToJson {
 
         private readonly string PATH;
+        string pathDir = $"{Environment.CurrentDirectory}\\config";
 
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="path"></param>
+        public SerializerToJson() { }
         public SerializerToJson(string nameFile) {
-            string pathDir = $"{Environment.CurrentDirectory}\\config";
 
             if (Directory.Exists(pathDir)) {
                 PATH = $"{pathDir}\\{nameFile}.json";
+
+                if (File.Exists(PATH)) {
+                    List<string> arrFile = new List<string>();
+                    using (FileStream fileStream = new FileStream(PATH, FileMode.Open)) {
+                        using (StreamReader reader = new StreamReader(fileStream)) {
+                            arrFile.Add(reader.ReadToEnd());
+                        }
+                        if (arrFile[0] == "") {
+                            File.Delete(PATH);
+                            arrFile.Clear();
+                        }
+                        else {
+                            arrFile.Clear();
+                        }
+                    }
+                }
             }
             else {
                 Directory.CreateDirectory(pathDir);
@@ -57,13 +74,10 @@ namespace Yummy_TV.Core {
             }
         }
 
-        /// <summary>
-        /// Сохранение в json-файл
-        /// </summary>
-        public void SaveFIleJson(object? modelNotepads) {
+        public void SaveFIleJson(object? modelNotepads, string nameFile) {
 
             //считываем в поток созданый или открытый файл
-            using (StreamWriter writer = File.CreateText(PATH)) {
+            using (StreamWriter writer = File.CreateText($"{pathDir}\\{nameFile}.json")) {
 
                 //сериализируем лист-модели в json-файл
                 string outPut = JsonConvert.SerializeObject(modelNotepads);
@@ -72,7 +86,6 @@ namespace Yummy_TV.Core {
                 writer.Write(outPut);
             }
         }
-
 
     }
 }
