@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using Yummy_TV.Core;
+﻿using Yummy_TV.Core;
 
 namespace Yummy_TV.ViewModel {
     public class MainNavigationVM : PropertyChangedBase {
@@ -38,12 +37,12 @@ namespace Yummy_TV.ViewModel {
         #region Все команды (All Command)
 
         /// <summary>
-        /// Закрытие всех оконых потоков 
+        /// Закрытие всех оконых потоков
         /// </summary>
         public RelayCommand ButtonShutdown {
             get {
                 return _buttonShutdown ??= new RelayCommand(obj => {
-                    Application.Current.Shutdown();
+                    System.Windows.Application.Current.Shutdown();
                 });
             }
         }
@@ -118,14 +117,6 @@ namespace Yummy_TV.ViewModel {
 
         #region Methods
 
-        /// <summary>
-        /// Задает стартовую позиция окна
-        /// </summary>
-        /// <param name="window"></param>
-        private void SetCenterPositionWindow(Window window) {
-            window.Owner = Application.Current.MainWindow;
-            window.Close();
-        }
         /// <summary>
         /// Первое отображение главного окна
         /// </summary>

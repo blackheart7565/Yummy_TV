@@ -1,4 +1,4 @@
-﻿<Window x:Class="Yummy_TV.AddToFilter"
+﻿<Window x:Class="Yummy_TV.View.AddToFilter"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:fontW="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,17 +13,24 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent">
+        Background="Transparent"
+        x:Name="FilterWindow">
 
     <Window.DataContext>
-        <vm:MainNavigationVM />
+        <vm:AddToFilterVM />
     </Window.DataContext>
 
     <Border CornerRadius="25"
             BorderThickness="3"
             BorderBrush="{StaticResource ColorBrush20}"
-            Background="{StaticResource ColorBrush22}"
-            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            Background="{StaticResource ColorBrush22}">
+
+        <inter:Interaction.Triggers>
+            <inter:EventTrigger EventName="MouseLeftButtonDown">
+                <inter:InvokeCommandAction Command="{Binding WindowDragMoveCommand}" 
+                                           CommandParameter="{Binding ElementName=FilterWindow}"/>
+            </inter:EventTrigger>
+        </inter:Interaction.Triggers>
 
         <Grid>
 
@@ -50,7 +57,8 @@
                         Width="50"
                         Height="20"
                         Style="{StaticResource BtnAddWinStyle}"
-                        Click="Close_Click">
+                        Command="{Binding CloseWindow}"
+                        CommandParameter="{Binding ElementName=FilterWindow}">
                     <fontW:IconImage Icon="Xmark"
                                      Style="{StaticResource imageFontButtonAddToList}" />
                 </Button>
@@ -100,7 +108,8 @@
                         Content="Сохранить"
                         HorizontalAlignment="Left"
                         Style="{StaticResource BtnAddWinStyle}"
-                        Click="SaveToList_Click">
+                        Command="{Binding SaveToListCommand}"
+                        CommandParameter="{Binding SelectedIndex, ElementName=ComboBoxStatus}">
                 </Button>
 
                 <Button Grid.Column="2"

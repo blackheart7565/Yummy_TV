@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Yummy_TV {
+namespace Yummy_TV.View {
     /// <summary>
     /// Interaction logic for FullListUS.xaml
     /// </summary>
@@ -8,8 +8,7 @@ namespace Yummy_TV {
 
         public static int Index;
 
-        public FullListUS()
-        {
+        public FullListUS() {
             InitializeComponent();
         }
 

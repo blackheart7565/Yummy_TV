@@ -5,18 +5,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Yummy_TV"
+        xmlns:view="clr-namespace:Yummy_TV.View"
         xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="700"
         Width="1000"
+        MinHeight="700"
+        MinWidth="1000"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Loaded="Window_Loaded"
-        MinHeight="700"
-        MinWidth="1000">
+        Loaded="Window_Loaded">
 
     <Window.DataContext>
         <vm:MainNavigationVM />
@@ -25,27 +26,27 @@
     <Window.Resources>
 
         <DataTemplate DataType="{x:Type vm:HomeVM}">
-            <local:Home />
+            <view:Home />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:FullListVM}">
-            <local:FullListUS />
+            <view:FullListUS />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:ViewMomentVM}">
-            <local:ViewMoment />
+            <view:ViewMoment />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:ViewPlansVM}">
-            <local:ViewPlans />
+            <view:ViewPlans />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:ViewedVM}">
-            <local:Viewed />
+            <view:Viewed />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:FavouriteVM}">
-            <local:Favourite />
+            <view:Favourite />
         </DataTemplate>
 
     </Window.Resources>
