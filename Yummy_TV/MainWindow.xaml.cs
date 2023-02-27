@@ -6,9 +6,6 @@ using Yummy_TV.ViewModel;
 using Yummy_TV.Core;
 
 namespace Yummy_TV {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window {
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);

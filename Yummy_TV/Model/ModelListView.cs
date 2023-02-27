@@ -6,7 +6,7 @@ namespace Yummy_TV.Model {
     public class ModelListView : PropertyChangedBase {
 
         private int _id;
-        private string _imgae;
+        private byte[] _imgae;
         private string _name = "";
         private string _originalName = "";
         private int _released;
@@ -19,7 +19,7 @@ namespace Yummy_TV.Model {
             get => _id;
             set => Set(ref _id, value, nameof(ID));
         }
-        public string Image {
+        public byte[] Image {
             get => _imgae;
             set => Set(ref _imgae, value, nameof(Image));
         }
@@ -46,6 +46,11 @@ namespace Yummy_TV.Model {
 
         public ModelListView() { }
         public ModelListView(string name, string originalName) {
+            Name = name;
+            OriginalName = originalName;
+        }
+        public ModelListView(byte[] image, string name, string originalName) {
+            Image = image;
             Name = name;
             OriginalName = originalName;
         }

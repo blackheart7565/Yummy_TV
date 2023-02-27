@@ -115,7 +115,8 @@
                 <Button Grid.Column="2"
                         Content="Удалить"
                         HorizontalAlignment="Right"
-                        Style="{StaticResource BtnAddWinStyle}">
+                        Style="{StaticResource BtnAddWinStyle}"
+                        Command="{Binding RemoveToList}">
                 </Button>
 
             </Grid>

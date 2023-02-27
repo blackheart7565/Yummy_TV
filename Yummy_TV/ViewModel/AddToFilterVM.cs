@@ -1,16 +1,24 @@
-﻿using System.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using Yummy_TV.Core;
+using Yummy_TV.Model;
 using Yummy_TV.View;
 
 namespace Yummy_TV.ViewModel {
     public class AddToFilterVM {
+
+        private string mameTemp = "";
+        private string originalNameTemp = "";
 
         private SerializerToJson? serializerToJson;
 
         private RelayCommand<Window>? _windowDragMoveCommand;
         private RelayCommand<Window>? _closeWindow;
         private RelayCommand<int>? _saveToListCommand;
+        private RelayCommand? _removeToList;
 
         #region Все команды (All Command)
 
@@ -47,9 +55,7 @@ namespace Yummy_TV.ViewModel {
                                                         x.OriginalName == AllNavigationCollection.AllListCollection[FullListUS.Index].OriginalName))) {
                                     AllNavigationCollection.ViewMomentCollection.Add(AllNavigationCollection.AllListCollection[FullListUS.Index]);
 
-                                    for (int i = 0; i < AllNavigationCollection.ViewMomentCollection.Count; i++) {
-                                        AllNavigationCollection.ViewMomentCollection[i].ID = i;
-                                    }
+                                    GenerateID(AllNavigationCollection.ViewMomentCollection);
 
                                     serializerToJson = new SerializerToJson();
                                     serializerToJson.SaveFIleJson(AllNavigationCollection.ViewMomentCollection, "ViewMomentListJson");
@@ -63,9 +69,7 @@ namespace Yummy_TV.ViewModel {
                                 x.OriginalName == AllNavigationCollection.AllListCollection[FullListUS.Index].OriginalName))) {
                                     AllNavigationCollection.ViewPlansCollection.Add(AllNavigationCollection.AllListCollection[FullListUS.Index]);
 
-                                    for (int i = 0; i < AllNavigationCollection.ViewPlansCollection.Count; i++) {
-                                        AllNavigationCollection.ViewPlansCollection[i].ID = i;
-                                    }
+                                    GenerateID(AllNavigationCollection.ViewPlansCollection);
 
                                     serializerToJson = new SerializerToJson();
                                     serializerToJson.SaveFIleJson(AllNavigationCollection.ViewPlansCollection, "ViewPlansListJson");
@@ -79,9 +83,7 @@ namespace Yummy_TV.ViewModel {
                                                         x.OriginalName == AllNavigationCollection.AllListCollection[FullListUS.Index].OriginalName))) {
                                     AllNavigationCollection.ViewedCollection.Add(AllNavigationCollection.AllListCollection[FullListUS.Index]);
 
-                                    for (int i = 0; i < AllNavigationCollection.ViewedCollection.Count; i++) {
-                                        AllNavigationCollection.ViewedCollection[i].ID = i;
-                                    }
+                                    GenerateID(AllNavigationCollection.ViewedCollection);
 
                                     serializerToJson = new SerializerToJson();
                                     serializerToJson.SaveFIleJson(AllNavigationCollection.ViewedCollection, "ViewedListJson");
@@ -95,9 +97,7 @@ namespace Yummy_TV.ViewModel {
                                                         x.OriginalName == AllNavigationCollection.AllListCollection[FullListUS.Index].OriginalName))) {
                                     AllNavigationCollection.FavouriteCollection.Add(AllNavigationCollection.AllListCollection[FullListUS.Index]);
 
-                                    for (int i = 0; i < AllNavigationCollection.FavouriteCollection.Count; i++) {
-                                        AllNavigationCollection.FavouriteCollection[i].ID = i;
-                                    }
+                                    GenerateID(AllNavigationCollection.FavouriteCollection);
 
                                     serializerToJson = new SerializerToJson();
                                     serializerToJson.SaveFIleJson(AllNavigationCollection.FavouriteCollection, "FavouriteListJson");
@@ -107,6 +107,68 @@ namespace Yummy_TV.ViewModel {
                     }
                 });
             }
+        }
+        /// <summary>
+        /// Удаление из списка
+        /// </summary>
+        public RelayCommand? RemoveToList {
+            get {
+                return _removeToList ??= new RelayCommand(obj => {
+                    serializerToJson = new SerializerToJson();
+
+                    mameTemp = AllNavigationCollection.AllListCollection[FullListUS.Index].Name;
+                    originalNameTemp = AllNavigationCollection.AllListCollection[FullListUS.Index].OriginalName;
+
+                    RemoveElementList(AllNavigationCollection.AllListCollection, "FullListJson");
+                    RemoveElementList(AllNavigationCollection.ViewMomentCollection, "ViewMomentListJson");
+                    RemoveElementList(AllNavigationCollection.ViewPlansCollection, "ViewPlansListJson");
+                    RemoveElementList(AllNavigationCollection.ViewedCollection, "ViewedListJson");
+                    RemoveElementList(AllNavigationCollection.FavouriteCollection, "FavouriteListJson");
+                });
+            }
+        }
+
+        #endregion
+
+        #region All Method
+
+        /// <summary>
+        /// Проверка на совместимость ID колекции.
+        /// </summary>
+        /// <param name="collectionModels"></param>
+        /// <returns> Возвращяет true если ID равняется индексу, иначе false </returns>
+        private bool IsCheckIndexList(ObservableCollection<ModelListView> collectionModels) {
+            if (collectionModels.Any(all => all.Name == collectionModels[FullListUS.Index].Name &&
+                                            all.OriginalName == collectionModels[FullListUS.Index].OriginalName)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        /// <summary>
+        /// Перегенерация Айди
+        /// </summary>
+        /// <param name="collectionModel"></param>
+        private void GenerateID(ObservableCollection<ModelListView> collectionModel) {
+            for (int i = 0; i < collectionModel.Count; i++) {
+                collectionModel[i].ID = i;
+            }
+        }
+        /// <summary>
+        /// Удаление елемента колекции
+        /// </summary>
+        /// <param name="collectionModel"></param>
+        private void RemoveElementList(ObservableCollection<ModelListView> collectionModel, string nameFileJson) {
+
+           List<int> indx =  collectionModel.Where(c => c.Name == mameTemp &&
+                                                            c.OriginalName == originalNameTemp)
+                                            .Select(x=> x.ID).ToList();
+            if (indx.Count > 0) {
+                collectionModel.RemoveAt(indx[0]);
+                GenerateID(collectionModel);
+                serializerToJson?.SaveFIleJson(collectionModel, nameFileJson);
+            }            
         }
 
         #endregion

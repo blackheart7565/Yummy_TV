@@ -70,19 +70,13 @@
                             Height="100">
 
                     <Image Width="100"
-                           Margin="150,0,0,0" />
-
-                    <Button Width="150"
-                            Height="30"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Right"
-                            Content="Добавить картинку"
-                            Background="Transparent"
-                            Foreground="{StaticResource ColorBrush20}"
-                            FontWeight="Bold"
-                            FontSize="12"
-                            BorderBrush="Transparent"
-                            BorderThickness="0" />
+                           Margin="150,0,0,0"
+                           x:Name="imageListBox"
+                           Source="{Binding ImageByte, UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                    <Button Content="Добавить картинку"
+                            Style="{StaticResource buttonAddImage}"
+                            Command="{Binding AddToListImage}"/>
 
                 </StackPanel>
                 <Border Height="2"
