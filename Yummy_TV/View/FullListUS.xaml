@@ -3,15 +3,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Tag="{Binding AllListCollection}">
+             Tag="{Binding GetModelCollaction}">
 
     <UserControl.DataContext>
-        <vm:AllNavigationCollection />
+        <vm:FullListVM />
     </UserControl.DataContext>
 
     <Grid>
@@ -32,7 +31,7 @@
                     Content="Добавить"
                     Background="{StaticResource ColorBrush5}"
                     Foreground="{StaticResource ColorBrush20}"
-                    Click="Button_Click" />
+                    Command="{Binding ShowAddToListBox}" />
 
         </StackPanel>
 
@@ -122,6 +121,7 @@
                         <Grid Grid.Column="4">
 
                             <Button Grid.Column="4"
+                                    Name="buttonShowFilter"
                                     Style="{StaticResource ListBoxItemsButton}"
                                     Click="AddFilterList_Click"
                                     Tag="{Binding Path=ID}"

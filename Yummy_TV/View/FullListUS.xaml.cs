@@ -12,11 +12,6 @@ namespace Yummy_TV.View {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e) {
-            AddToListView addToList = new();
-            addToList.ShowDialog();
-        }
-
         private void AddFilterList_Click(object sender, System.Windows.RoutedEventArgs e) {
             Index = (int)((Button)sender).Tag;
             AddToFilter filter = new();

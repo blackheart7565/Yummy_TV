@@ -10,6 +10,8 @@ namespace Yummy_TV.ViewModel {
         private RelayCommand? _showViewPlansCommand;
         private RelayCommand? _showViewedCommand;
         private RelayCommand? _showFavouriteCommand;
+        private RelayCommand? _showSettingsCommand;
+        private RelayCommand? _showRenameAllFileToFoldeCommand;
 
         private PropertyChangedBase? _changedBase;
 
@@ -112,6 +114,30 @@ namespace Yummy_TV.ViewModel {
                 });
             }
         }
+        /// <summary>
+        /// Настройки
+        /// </summary>
+        public RelayCommand ShowSettingsCommand {
+            get {
+                return _showSettingsCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new SettingsVM();
+                    Information = "Настройки";
+                });
+            }
+        }
+        /// <summary>
+        /// Настройки
+        /// </summary>
+        public RelayCommand ShowRenameAllFileToFoldeCommand {
+            get {
+                return _showSettingsCommand ??= new RelayCommand(obj => {
+                    ChangedBase = new RenameAllFileToFolderVm();
+                    Information = "Переименовка файлов";
+                });
+            }
+        }
+
+       
 
         #endregion
 

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Yummy_TV"
         xmlns:view="clr-namespace:Yummy_TV.View"
         xmlns:vm="clr-namespace:Yummy_TV.ViewModel"
         mc:Ignorable="d"
@@ -13,6 +12,7 @@
         Width="1000"
         MinHeight="700"
         MinWidth="1000"
+        x:Name="MainWindowName"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -28,25 +28,33 @@
         <DataTemplate DataType="{x:Type vm:HomeVM}">
             <view:Home />
         </DataTemplate>
-        
+
         <DataTemplate DataType="{x:Type vm:FullListVM}">
             <view:FullListUS />
         </DataTemplate>
-        
+
         <DataTemplate DataType="{x:Type vm:ViewMomentVM}">
             <view:ViewMoment />
         </DataTemplate>
-        
+
         <DataTemplate DataType="{x:Type vm:ViewPlansVM}">
             <view:ViewPlans />
         </DataTemplate>
-        
+
         <DataTemplate DataType="{x:Type vm:ViewedVM}">
             <view:Viewed />
         </DataTemplate>
-        
+
         <DataTemplate DataType="{x:Type vm:FavouriteVM}">
             <view:Favourite />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SettingsVM}">
+            <view:Settings />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RenameAllFileToFolderVm}">
+            <view:RenameAllFileToFolder />
         </DataTemplate>
 
     </Window.Resources>
@@ -160,7 +168,7 @@
                                      Command="{Binding ShowViewedCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
-                                           Tag="Прочитано"
+                                           Tag="Просмотрено"
                                            Margin="10,0,0,0" />
                             </StackPanel>
                         </RadioButton>
@@ -174,10 +182,11 @@
                             </StackPanel>
                         </RadioButton>
                         <RadioButton Style="{StaticResource menuButtonNavigationStyles}"
-                                     Tag="{StaticResource ColorBrush67}">
+                                     Tag="{StaticResource ColorBrush67}"
+                                     Command="{Binding ShowRenameAllFileToFoldeCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource menuButtonNavigationText}"
-                                           Tag="Настройки"
+                                           Tag="Переименовка файлов"
                                            Margin="10,0,0,0" />
                             </StackPanel>
                         </RadioButton>
@@ -272,6 +281,7 @@
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="*" />
 
                     </Grid.RowDefinitions>
@@ -305,6 +315,17 @@
                             Click="ButtonMinimizate_Click">
 
                         <fontW:IconImage Icon="WindowMinimize"
+                                         Style="{StaticResource imageFontButton}" />
+
+                    </Button>
+
+                    <Button Grid.Row="3"
+                            Style="{StaticResource buttonActionTopPanel}"
+                            Tag="{StaticResource ColorBrush25}"
+                            Foreground="{StaticResource ColorBrush65}"
+                            Command="{Binding ShowSettingsCommand}">
+
+                        <fontW:IconImage Icon="Gear"
                                          Style="{StaticResource imageFontButton}" />
 
                     </Button>
